@@ -18,6 +18,7 @@ public class MutantController {
 	@Autowired
 	private IInitVerificationService iInitVerificationService;
 
+	// controlador principal para verificar un nuevo DNA
 	@PostMapping
 	public ResponseEntity<?> mutant(@RequestBody SingleDNA dna) {
 		if (iInitVerificationService.startProcess(dna.getDna())) {

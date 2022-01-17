@@ -20,11 +20,13 @@ public class PersonController {
 	@Autowired
 	private IPersonService iPersonService;
 
+	// Controlador que devuelve todos los dna analizados
 	@GetMapping
 	public ResponseEntity<?> list() {
 		return ResponseEntity.ok().body(iPersonService.findAll());
 	}
 
+	// Controldor que devuelve un dna especifico 
 	@GetMapping("/{id}")
 	public ResponseEntity<?> byId(@PathVariable Long id) {
 
@@ -36,7 +38,8 @@ public class PersonController {
 			return ResponseEntity.ok().body(result);
 		}
 	}
-
+	
+	// Eliminacion de todos los dna analizados
 	@DeleteMapping
 	public ResponseEntity<?> delete() {
 		iPersonService.deleteAll();

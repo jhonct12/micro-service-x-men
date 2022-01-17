@@ -21,7 +21,7 @@ public class PersonService implements IPersonService {
 
 	@Autowired
 	private IPersonRespository iPersonRespository;
-	
+
 	@Autowired
 	private LoadProperties loadProperties;
 
@@ -37,7 +37,6 @@ public class PersonService implements IPersonService {
 		return iPersonRespository.findById(id);
 	}
 
-
 	@Transactional
 	@Override
 	public void deleteAll() {
@@ -47,16 +46,23 @@ public class PersonService implements IPersonService {
 	@Transactional(readOnly = true)
 	@Override
 	public boolean checkDNAExist(ArrayList<String> dnas) {
+
+		// validamos si un dna ya existe con una verificacion de md5
 		String md5Result = DigestUtils.md5DigestAsHex(dnas.toString().getBytes());
 
 		Optional<Person> person = iPersonRespository.findByVerification(md5Result);
 
+		// si el dna ya existe retorna true de lo contrario falso
 		return person.isPresent();
 
 	}
 
 	@Override
 	public void saveNewDna(ArrayList<String> dnas, boolean mutant) {
+
+		// agregamos un nuevo dna verificado, pero como puede que dos dna estes siendo
+		// analizados al tiempo por que se lanzaron o procesaron al mismo intervalo, se
+		// controla con una exepcion el segundo que se quiera insertar
 		try {
 			Person newPersonDna = new Person();
 
@@ -71,6 +77,7 @@ public class PersonService implements IPersonService {
 			newPersonDna.setListDna(listOfDnas);
 			newPersonDna.setMutant(mutant);
 
+			// obtenemos el md5 para este nuevo dna
 			String md5Result = DigestUtils.md5DigestAsHex(dnas.toString().getBytes());
 
 			newPersonDna.setVerification(md5Result);

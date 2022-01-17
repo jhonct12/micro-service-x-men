@@ -15,6 +15,8 @@ public class StatsController {
 	@Autowired
 	private IInitStatsService iInitStatsService;
 
+	
+	// Controlador que devuelve los stats de los dna analizados
 	@GetMapping
 	public ResponseEntity<?> stats() {
 

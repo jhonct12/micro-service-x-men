@@ -20,13 +20,6 @@ public class ValidatorInpuntDNAService implements IValidatorInputDNAService {
 	@Override
 	public boolean validateInputDNA(ArrayList<String> dnas) {
 
-		// principal validation
-		if (dnas.size() < loadProperties.getNumberCharacters()) {
-			// throw new
-			// InvalidInputStructure(loadProperties.getMsgInvalidInputStructure());
-			return false;
-		}
-
 		for (int i = 0; i < dnas.size(); i++) {
 			// validate if all sequence is valid and same size
 			if (dnas.get(i).length() != dnas.size()) {
@@ -39,6 +32,16 @@ public class ValidatorInpuntDNAService implements IValidatorInputDNAService {
 				throw new InvalidLetterExeption(loadProperties.getMsgInvalidLetters());
 			}
 		}
+
+		// este caso es espacial, ya que validado lo anterior, pero la longitud es
+		// inferior a la catidad de la longitud de la secuencia, la persona es
+		// considerada humano
+		if (dnas.size() < loadProperties.getNumberCharacters()) {
+			// throw new
+			// InvalidInputStructure(loadProperties.getMsgInvalidInputStructure());
+			return false;
+		}
+
 		return true;
 	}
 

@@ -16,6 +16,9 @@ public class InitStatsService implements IInitStatsService {
 	@Override
 	public StatsDNA getStats() {
 
+		// conosultamos la informacion insertada con el fin de generar las estadisticas
+		// y realizar el calculo respectivo
+
 		int countMutant = iPersonRespository.findCountMutant();
 
 		int countHuman = iPersonRespository.findCountHuman();

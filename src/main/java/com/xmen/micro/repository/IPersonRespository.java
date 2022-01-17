@@ -14,6 +14,6 @@ public interface IPersonRespository extends CrudRepository<Person, Long> {
 	@Query("select COUNT(*) from Person p where p.isMutant = true")
 	int findCountMutant();
 	
-	@Query("select COUNT(*) from Person p where p.isHuman = true")
+	@Query("select COUNT(*) from Person p where p.isMutant = false")
 	int findCountHuman();
 }

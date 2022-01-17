@@ -32,9 +32,8 @@ public class Person {
 	private List<PersonsDNA> listDna;
 
 	private boolean isMutant;
-	private boolean isHuman;
-	
-	@Column(unique=true)
+
+	@Column(unique = true)
 	private String verification;
 
 	@Column(name = "create_at")
@@ -68,14 +67,6 @@ public class Person {
 
 	public void setMutant(boolean isMutant) {
 		this.isMutant = isMutant;
-	}
-
-	public boolean isHuman() {
-		return isHuman;
-	}
-
-	public void setHuman(boolean isHuman) {
-		this.isHuman = isHuman;
 	}
 
 	public Date getCreateAt() {

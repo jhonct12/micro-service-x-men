@@ -70,7 +70,6 @@ public class PersonService implements IPersonService {
 
 			newPersonDna.setListDna(listOfDnas);
 			newPersonDna.setMutant(mutant);
-			newPersonDna.setHuman(!mutant);
 
 			String md5Result = DigestUtils.md5DigestAsHex(dnas.toString().getBytes());
 

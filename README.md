@@ -24,7 +24,7 @@ Como se menciono anteriormente para la realizacion del examen se hace uso de H2 
 
 - # Diagrama del modelo propuesto
 
-  ![alt text](https://github.com/jhonct12/micro-service-x-men/blob/main/DB.png?raw=true)
+  ![Modelo Bade de Datos](https://github.com/jhonct12/micro-service-x-men/blob/main/DB.PNG?raw=true)
 
 -  # Consideraciones especiales.
 - El examen tiene configurado dos bases de datos una H2 en memoria y otra MySql, como se muestran a continuacion.
